@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Cappuccino",
+    "type": "Espresso-based",
+    "image": "https://example.com/cappuccino.jpg"
+  },
+  {
+    "name": "Latte",
+    "type": "Espresso-based",
+    "image": "https://example.com/latte.jpg"
+  },
+  {
+    "name": "Mocha",
+    "type": "Espresso-based",
+    "image": "https://example.com/mocha.jpg"
+  },
+  {
+    "name": "Americano",
+    "type": "Espresso-based",
+    "image": "https://example.com/americano.jpg"
+  },
+  {
+    "name": "Espresso",
+    "type": "Espresso-based",
+    "image": "https://example.com/espresso.jpg"
+  },
+  {
+    "name": "Macchiato",
+    "type": "Espresso-based",
+    "image": "https://example.com/macchiato.jpg"
+  },
+  {
+    "name": "Flat White",
+    "type": "Espresso-based",
+    "image": "https://example.com/flat-white.jpg"
+  }
+]
