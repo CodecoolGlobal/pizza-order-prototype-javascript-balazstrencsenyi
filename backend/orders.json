@@ -1,0 +1,11 @@
+[
+  {
+  "name": "Cappuccino",
+    "type": "Espresso-based",
+    "image": "https://example.com/cappuccino.jpg",
+    "customer-name": "Kiss Géza",
+    "amount": "10",
+    "..": "Szeretném arany dobozban"
+
+  }
+]

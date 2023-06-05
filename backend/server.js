@@ -5,17 +5,18 @@ const app = express();
 const PORT = 3000;
 
 const FE_FS_PATH = path.join(__dirname, '..', 'frontend');
-const costumersFilePath = path.join(__dirname, "../backend/costumer.json");
+const ordersFilePath = path.join(__dirname, "../backend/orders.json");
+const coffeePicturesDir = path.join(__dirname, '/media');
 
 app.use(express.static(FE_FS_PATH));
 app.use(express.json());
 
 //megrendelők mentése
-app.post("/customer/:name", (req, res) => {
+app.post("/orders/:name", (req, res) => {
   const name = decodeURIComponent(req.params.name);
   const jsonData = req.body;
 
-  fs.readFile(costumersFilePath, "utf8", (err, data) => {
+  fs.readFile(ordersFilePath, "utf8", (err, data) => {
     if (err) {
       console.error(err);
       return res.status(500).send("Error can't save");
@@ -38,7 +39,7 @@ app.post("/customer/:name", (req, res) => {
       id: maxId + 1,
       name: name,
       status: true,
-      data: jsonData // Az új ügyfélhez hozzáadja a JSON adatot
+      data: jsonData 
     };
 
     customers.push(newCustomer);
@@ -54,7 +55,7 @@ app.post("/customer/:name", (req, res) => {
         return res.status(500).send("Error can't save");
       }
 
-      fs.writeFile(costumersFilePath, updatedData, "utf8", (err) => {
+      fs.writeFile(ordersFilePath, updatedData, "utf8", (err) => {
         if (err) {
           console.error(err);
           return res.status(500).send("Error can't save");
@@ -66,16 +67,54 @@ app.post("/customer/:name", (req, res) => {
   });
 });
 
-app.get("/costumer", (req, res)=>{
-  
-})
+app.get("/orders", (req, res) => {
+  fs.readdir("orders", (err, files) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Error retrieving orders");
+    }
 
-app.get("/coffees/", (req, res)=>{
-//TODO
-})
-app.get("/coffees/pictures", (req, res)=>{
-//TODO
-})
+    const orders = [];
+    files.forEach((file) => {
+      const filePath = path.join(__dirname, "orders", file);
+      const orderData = fs.readFileSync(filePath, "utf8");
+      const order = JSON.parse(orderData);
+      orders.push(order);
+    });
+
+    res.json(orders);
+  });
+});
+
+app.get("/coffees", (req, res) => {
+  fs.readFile("coffees.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Error retrieving coffees");
+    }
+
+    const coffees = JSON.parse(data);
+    res.json(coffees);
+  });
+});
+
+app.get("/coffees/pictures", (req, res) => {
+  fs.readdir(coffeePicturesDir, (err, files) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Error retrieving coffee pictures");
+    }
+
+    const pictures = [];
+    files.forEach((file) => {
+      const filePath = path.join(coffeePicturesDir, file);
+      pictures.push(filePath);
+    });
+
+    res.json(pictures);
+  });
+});
+
  
 
 /*fs.writeFile('coffees.json', JSON.stringify(data, replacer, 2), (err) => {
