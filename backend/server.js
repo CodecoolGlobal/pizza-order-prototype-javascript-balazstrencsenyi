@@ -15,8 +15,9 @@ app.use(express.json());
 // Megrendelők mentése
 
 let currentMaxId = 0; 
-app.post("/orders/", (req, res) => {
+app.post("/orders/:name", (req, res) => {
   const formData = req.body;
+  const name = decodeURIComponent(req.params.name);
 
   if (!formData) {
     return res.status(400).send("Hiányzó űrlap adatok");
@@ -29,15 +30,10 @@ app.post("/orders/", (req, res) => {
     formData: formData
   };
 
-  const newFileName = `customer_${currentMaxId}.json`;
-  const newFilePath = path.join(__dirname, "data", newFileName);
+  const fileName = `${name.replace(/\s+/g, "_")}_${currentMaxId}.json`;
+  const newFilePath = path.join(__dirname, "data", fileName);
 
-  const allData = {
-    customerData: customerData,
-    allFormData: formData
-  };
-
-  fs.writeFile(newFilePath, JSON.stringify(allData, null, 2), "utf8", (err) => {
+  fs.writeFile(newFilePath, JSON.stringify(customerData, null, 2), "utf8", (err) => {
     if (err) {
       console.log(err);
       return res.status(500).send("Hiba: nem sikerült menteni");
@@ -46,8 +42,6 @@ app.post("/orders/", (req, res) => {
     return res.send("Mentve");
   });
 });
-
-
 
 
 app.get("/orders", (req, res) => {
