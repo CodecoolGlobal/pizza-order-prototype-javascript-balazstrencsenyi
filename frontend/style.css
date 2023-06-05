@@ -60,8 +60,12 @@ form {
   display: flex;
   flex-direction: column;
   margin-top: 50px;
-  gap: 10px;
+  gap: 8px;
 
+}
+
+form > input {
+  margin-bottom: 10px;
 }
 
 #card1-container, #card2-container, #card3-container, #card4-container, #card5-container, #card6-container, #card7-container {
