@@ -29,15 +29,15 @@ export async function getImage(url) {
 }
 
 //orders post
-export async function post(url, data){
-  const use = await fetch(url, {
+export async function post(url, formData) {
+  const response = await fetch(url, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
-    body: data
-  })
-  const res = await use.json()
-  return res
+    body: JSON.stringify(formData),
+  });
+  return response;
 }
+
 

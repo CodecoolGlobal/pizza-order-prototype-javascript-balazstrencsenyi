@@ -1,8 +1,11 @@
 import { getImage } from "./utils.js";
 
-export function fetchPics(){
-window.addEventListener("load", async function(){
-  const pics = await getImage("/coffees/pictures")
-  console.log(pics)
-})
+export async function fetchPics() {
+  const imageUrls = [];
+  for (let i = 1; i <= 7; i++) {
+    const imageUrl = `/coffees/pictures/${i}.jpg`;
+    const imageObjectURL = await getImage(imageUrl);
+    imageUrls.push(imageObjectURL);
+  }
+
 }

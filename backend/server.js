@@ -3,72 +3,55 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 const PORT = 3000;
+const upload = require('express-fileupload')
 
 const FE_FS_PATH = path.join(__dirname, '..', 'frontend');
-const ordersFilePath = path.join(__dirname, "../backend/orders.json");
-const coffeePicturesDir = path.join(__dirname, '/media');
+const ordersFilePath = path.join(__dirname, "data");
+const coffeePicturesDir = path.join(__dirname, 'media');
 
 app.use(express.static(FE_FS_PATH));
 app.use(express.json());
 
-//megrendelők mentése
-app.post("/orders/:name", (req, res) => {
-  const name = decodeURIComponent(req.params.name);
-  const jsonData = req.body;
+// Megrendelők mentése
 
-  fs.readFile(ordersFilePath, "utf8", (err, data) => {
+let currentMaxId = 0; 
+app.post("/orders/", (req, res) => {
+  const formData = req.body;
+
+  if (!formData) {
+    return res.status(400).send("Hiányzó űrlap adatok");
+  }
+
+  currentMaxId++; 
+
+  const customerData = {
+    id: currentMaxId,
+    formData: formData
+  };
+
+  const newFileName = `customer_${currentMaxId}.json`;
+  const newFilePath = path.join(__dirname, "data", newFileName);
+
+  const allData = {
+    customerData: customerData,
+    allFormData: formData
+  };
+
+  fs.writeFile(newFilePath, JSON.stringify(allData, null, 2), "utf8", (err) => {
     if (err) {
-      console.error(err);
-      return res.status(500).send("Error can't save");
+      console.log(err);
+      return res.status(500).send("Hiba: nem sikerült menteni");
     }
 
-    let customers = [];
-    if (data) {
-      customers = JSON.parse(data);
-    }
-
-    const existingCustomer = customers.find(
-      (customer) => customer.name === name
-    );
-    if (existingCustomer) {
-      return res.status(400).send("Customer already ordered");
-    }
-
-    const maxId = Math.max(...customers.map((customer) => customer.id), 0);
-    const newCustomer = {
-      id: maxId + 1,
-      name: name,
-      status: true,
-      data: jsonData 
-    };
-
-    customers.push(newCustomer);
-
-    const updatedData = JSON.stringify(customers, null, 2);
-
-    const newFileName = `customer_${newCustomer.id}.json`;
-    const newFilePath = path.join(__dirname, "orders", newFileName);
-
-    fs.writeFile(newFilePath, JSON.stringify(jsonData, null, 2), "utf8", (err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send("Error can't save");
-      }
-
-      fs.writeFile(ordersFilePath, updatedData, "utf8", (err) => {
-        if (err) {
-          console.error(err);
-          return res.status(500).send("Error can't save");
-        }
-
-        res.send("Saved");
-      });
-    });
+    return res.send("Mentve");
   });
 });
 
+
+
+
 app.get("/orders", (req, res) => {
-  fs.readdir("orders", (err, files) => {
+  fs.readdir(ordersFilePath, (err, files) => {
     if (err) {
       console.error(err);
       return res.status(500).send("Error retrieving orders");
@@ -76,7 +59,7 @@ app.get("/orders", (req, res) => {
 
     const orders = [];
     files.forEach((file) => {
-      const filePath = path.join(__dirname, "orders", file);
+      const filePath = path.join(ordersFilePath, file);
       const orderData = fs.readFileSync(filePath, "utf8");
       const order = JSON.parse(orderData);
       orders.push(order);
@@ -98,45 +81,20 @@ app.get("/coffees", (req, res) => {
   });
 });
 
-app.get("/coffees/pictures", (req, res) => {
-  fs.readdir(coffeePicturesDir, (err, files) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send("Error retrieving coffee pictures");
-    }
+app.get("/coffees/pictures/:filename", async (req, res) => {
+  const filename = req.params.filename;
+  const filePath = path.join(coffeePicturesDir, filename);
 
-    const pictures = [];
-    files.forEach((file) => {
-      const filePath = path.join(coffeePicturesDir, file);
-      pictures.push(filePath);
-    });
-
-    res.json(pictures);
-  });
+  try {
+    const imageBlob = await fs.promises.readFile(filePath);
+    res.setHeader("Content-Type", "image/jpeg");
+    res.send(imageBlob);
+  } catch (err) {
+    console.error(err);
+    res.status(404).send("File not found");
+  }
 });
 
- 
-
-/*fs.writeFile('coffees.json', JSON.stringify(data, replacer, 2), (err) => {
-  if (err) {
-    console.error(err);
-    res.status(500).send('Error saving profile data');
-  } else {
-    res.sendStatus(200);
-  }
-}); */
-
-/* app.delete('/deleteCoffees', (req, res) => {
-  fs.unlink('coffees.json', (err) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Error deleting profile');
-    } else {
-      res.sendStatus(200);
-    }
-  });
-}); */
-
-app.listen(PORT, ()=>{
-  console.log("http://localhost:3000/")
-})
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}/`);
+});
