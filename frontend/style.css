@@ -58,7 +58,8 @@ form {
   display: flex;
   flex-direction: column;
   margin-top: 50px;
- 
+  gap: 7px;
+
 }
 
 #card1-container, #card2-container, #card3-container, #card4-container, #card5-container, #card6-container, #card7-container {
@@ -75,4 +76,24 @@ form {
 
 input {
   margin-bottom: 20px;
+  width: 200px;
+  
+}
+
+label {
+  font-size: 20px;
+}
+
+#button {
+  width: 200px;
+  height: 30px;
+  background-color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#button:hover {
+  background-color: #b07946;
+  color: white;
 }
