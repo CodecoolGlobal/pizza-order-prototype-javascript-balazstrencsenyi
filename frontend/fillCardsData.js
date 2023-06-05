@@ -14,11 +14,11 @@ export async function fillCardsData() {
   data.forEach((item, index) => {
     const h1 = document.createElement("h1");
     h1.innerHTML = item.name;
-    const h3 = document.createElement("h5");
-    h3.innerHTML = item.type;
+    const h5 = document.createElement("h5");
+    h5.innerHTML = item.type;
 
     const upCon = eval(`upCon${index + 1}`);
 
-    upCon.prepend(h1,h3);
+    upCon.prepend(h1,h5);
   });
 }
