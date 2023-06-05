@@ -3,7 +3,7 @@ import { createEl } from "./utils.js";
 
 export function createHeader() {
   const header = createEl("header", "header");
-  const div =createEl("div", { id: "text"});
+  const div =createEl("div", { id: "text", textContent: "Coffee Shop"});
   header.append(div);
   return header;
 } 
@@ -14,31 +14,31 @@ export function createLeftContainer () {
 
   const card1Container = createEl("div", { id: "card1-container", class: "card" });
   const card1 = createEl("div", { id: "card1" });
-  const input1 = createEl("input", { id: "input1", type: "text", name: "coffee", placeholder: "Enter the amount" });
+  const input1 = createEl("input", { id: "input1", type: "number", name: "coffee", placeholder: "Enter the amount" });
 
   const card2Container = createEl("div", { id: "card2-container", class: "card" });
   const card2 = createEl("div", { id: "card2" });
-  const input2 = createEl("input", { id: "input2", type: "text", name: "coffee", placeholder: "Enter the amount"  });
+  const input2 = createEl("input", { id: "input2", type: "number", name: "coffee", placeholder: "Enter the amount"  });
 
   const card3Container = createEl("div", { id: "card3-container", class: "card" });
   const card3 = createEl("div", { id: "card3" });
-  const input3 = createEl("input", { id: "input3", type: "text", name: "coffee", placeholder: "Enter the amount"  });
+  const input3 = createEl("input", { id: "input3", type: "number", name: "coffee", placeholder: "Enter the amount"  });
 
   const card4Container = createEl("div", { id: "card4-container", class: "card" });
   const card4 = createEl("div", { id: "card4" });
-  const input4 = createEl("input", { id: "input4", type: "text", name: "coffee", placeholder: "Enter the amount"  });
+  const input4 = createEl("input", { id: "input4", type: "number", name: "coffee", placeholder: "Enter the amount"  });
 
   const card5Container = createEl("div", { id: "card5-container", class: "card" });
   const card5 = createEl("div", { id: "card5" });
-  const input5 = createEl("input", { id: "input5", type: "text", name: "coffee", placeholder: "Enter the amount"  });
+  const input5 = createEl("input", { id: "input5", type: "number", name: "coffee", placeholder: "Enter the amount"  });
 
   const card6Container = createEl("div", { id: "card6-container", class: "card" });
   const card6 = createEl("div", { id: "card6" });
-  const input6 = createEl("input", { id: "input6", type: "text", name: "coffee", placeholder: "Enter the amount"  });  
+  const input6 = createEl("input", { id: "input6", type: "number", name: "coffee", placeholder: "Enter the amount"  });  
 
   const card7Container = createEl("div", { id: "card7-container", class: "card" });
   const card7 = createEl("div", { id: "card7" });
-  const input7 = createEl("input", { id: "input7", type: "text", name: "coffee", placeholder: "Enter the amount"  });
+  const input7 = createEl("input", { id: "input7", type: "number", name: "coffee", placeholder: "Enter the amount"  });
 
   card1Container.append(card1, input1);
   card2Container.append(card2, input2);
