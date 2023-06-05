@@ -9,7 +9,8 @@
   height: 100%;
   display: flex;
   margin-top: 50px;
-  background-color: #efe4d4;
+  background-color: #2f4f4e;
+  color: white;
 }
 
 header {
@@ -17,7 +18,7 @@ header {
   top: 0;
   width: 100%;
   height: 50px;
-  border-bottom: solid 1px rgba(165, 42, 42, 0.536);
+  border-bottom: solid 1px rgb(255, 255, 255);
 
 }
 
@@ -31,7 +32,7 @@ header {
   font-weight: bold;
   font-style: italic;
   color: white;
-  background-color: #b07946;
+  background-color: #0e191d;
 }
 
 #left-container {
@@ -42,7 +43,7 @@ header {
   width: 70%;
   height: 100%;
   gap: 20px;
-  background-color: #efe4d4;
+  background-color: #2f4f4e;
 }
 
 #right-container {
@@ -51,7 +52,7 @@ header {
   justify-content: start;
   align-items: center;
   width: 30%;
-  border-left: solid 1px rgba(165, 42, 42, 0.536);
+  border-left: solid 1px rgb(255, 255, 255);
 }
 
 form {
@@ -70,7 +71,7 @@ form {
 
   height: 380px;
   width: 400px;
-  border: solid 1px rgba(165, 42, 42, 0.536); 
+  border: solid 1px rgb(255, 255, 255); 
   margin-top: 50px;
 }
 
@@ -94,6 +95,6 @@ label {
 }
 
 #button:hover {
-  background-color: #b07946;
+  background-color: #0e191d;
   color: white;
 }
