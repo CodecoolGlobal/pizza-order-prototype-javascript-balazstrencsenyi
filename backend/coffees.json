@@ -1,37 +1,30 @@
 [
   {
-    "name": "Cappuccino",
-    "type": "Espresso-based",
-    "image": "https://example.com/cappuccino.jpg"
+    "name": "Breve Coffe",
+    "type": "A breve, also known as a breve latte or a caffe breve, is an espresso based coffee drink."
   },
   {
-    "name": "Latte",
-    "type": "Espresso-based",
-    "image": "https://example.com/latte.jpg"
+    "name": "Cafe Au Lait",
+    "type": "Café au lait is coffee with hot milk added. It differs from white coffee, which is coffee with cold milk or other whiteners added."
   },
   {
-    "name": "Mocha",
-    "type": "Espresso-based",
-    "image": "https://example.com/mocha.jpg"
+    "name": "Iced Coffe",
+    "type": "Iced coffee is a coffee beverage served cold. It may be prepared either by brewing coffee normally (i.e. carafe, French press, etc.) and then serving it over ice or in cold milk or by brewing the coffee cold."
   },
   {
-    "name": "Americano",
-    "type": "Espresso-based",
-    "image": "https://example.com/americano.jpg"
-  },
-  {
-    "name": "Espresso",
-    "type": "Espresso-based",
-    "image": "https://example.com/espresso.jpg"
-  },
-  {
-    "name": "Macchiato",
-    "type": "Espresso-based",
-    "image": "https://example.com/macchiato.jpg"
+    "name": "Espresso Con Panna",
+    "type": "Espresso con panna, which means 'espresso with cream' in Italian, is a single or double shot of espresso"
   },
   {
     "name": "Flat White",
-    "type": "Espresso-based",
-    "image": "https://example.com/flat-white.jpg"
+    "type": "A flat white is a coffee drink consisting of espresso with microfoam (steamed milk with small, fine bubbles and a glossy or velvety consistency)."
+  },
+  {
+    "name": "Frappe",
+    "type": "Frappé coffee, an iced coffee beverage made from instant coffee originally from Greece"
+  },
+  {
+    "name": "Americano",
+    "type": "Caffè Americano, a style of coffee prepared by adding hot water to espresso"
   }
 ]
