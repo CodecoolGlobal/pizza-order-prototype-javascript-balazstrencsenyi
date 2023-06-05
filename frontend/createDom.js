@@ -13,40 +13,61 @@ export function createLeftContainer () {
   const leftContainer = createEl("div", { id: "left-container" });
 
   const card1Container = createEl("div", { id: "card1-container", class: "card" });
-  const card1 = createEl("div", { id: "card1" });
+  const img1  = createEl("img", { id: "img1", src: "/coffees/pictures/1", alt: "coffee1" });
+  const container1 = createEl("div", { id: "container1" });
   const input1 = createEl("input", { id: "input1", type: "number", name: "coffee", placeholder: "Enter the amount" });
+  const button1 = createEl("button", { id: "button1", type: "submit", textContent: "Add to cart" });
+  container1.append(input1, button1);
 
   const card2Container = createEl("div", { id: "card2-container", class: "card" });
-  const card2 = createEl("div", { id: "card2" });
+  const img2 = createEl("img", { id: "img2", src: "/coffees/pictures/2", alt: "coffee2" });
+  const container2 = createEl("div", { id: "container2" });
   const input2 = createEl("input", { id: "input2", type: "number", name: "coffee", placeholder: "Enter the amount"  });
+  const  button2 = createEl("button", { id: "button2", type: "submit", textContent: "Add to cart" });
+  container2.append(input2, button2);
 
   const card3Container = createEl("div", { id: "card3-container", class: "card" });
-  const card3 = createEl("div", { id: "card3" });
+  const img3 = createEl("img", { id: "img3", src: "/coffees/pictures/3", alt: "coffee3" });
+  const container3 = createEl("div", { id: "container3" });
   const input3 = createEl("input", { id: "input3", type: "number", name: "coffee", placeholder: "Enter the amount"  });
+  const button3 = createEl("button", { id: "button3", type: "submit", textContent: "Add to cart" });
+  container3.append(input3, button3);
 
   const card4Container = createEl("div", { id: "card4-container", class: "card" });
-  const card4 = createEl("div", { id: "card4" });
+  const img4 = createEl("img", { id: "img4", src: "/coffees/pictures/4", alt: "coffee4" });
+  const container4 = createEl("div", { id: "container4" });
   const input4 = createEl("input", { id: "input4", type: "number", name: "coffee", placeholder: "Enter the amount"  });
+  const button4 = createEl("button", { id: "button4", type: "submit", textContent: "Add to cart" });
+  container4.append(input4, button4);
 
   const card5Container = createEl("div", { id: "card5-container", class: "card" });
-  const card5 = createEl("div", { id: "card5" });
+  const img5 = createEl("img", { id: "img5", src: "/coffees/pictures/5", alt: "coffee5" });
+  const container5 = createEl("div", { id: "container5" });
   const input5 = createEl("input", { id: "input5", type: "number", name: "coffee", placeholder: "Enter the amount"  });
+  const button5 = createEl("button", { id: "button5", type: "submit", textContent: "Add to cart" });
+  container5.append(input5, button5);
 
   const card6Container = createEl("div", { id: "card6-container", class: "card" });
-  const card6 = createEl("div", { id: "card6" });
+  const img6 = createEl("img", { id: "img6", src: "/coffees/pictures/6", alt: "coffee6" });
+  const container6 = createEl("div", { id: "container6" });
   const input6 = createEl("input", { id: "input6", type: "number", name: "coffee", placeholder: "Enter the amount"  });  
+  const button6 = createEl("button", { id: "button6", type: "submit", textContent: "Add to cart" });
+  container6.append(input6, button6);
 
   const card7Container = createEl("div", { id: "card7-container", class: "card" });
-  const card7 = createEl("div", { id: "card7" });
+  const img7 = createEl("img", { id: "img7", src: "/coffees/pictures/7", alt: "coffee7" });
+  const container7 = createEl("div", { id: "container7" });
   const input7 = createEl("input", { id: "input7", type: "number", name: "coffee", placeholder: "Enter the amount"  });
+  const button7 = createEl("button", { id: "button7", type: "submit", textContent: "Add to cart" });
+  container7.append(input7, button7);
 
-  card1Container.append(card1, input1);
-  card2Container.append(card2, input2);
-  card3Container.append(card3, input3);
-  card4Container.append(card4, input4);
-  card5Container.append(card5, input5);
-  card6Container.append(card6, input6);
-  card7Container.append(card7, input7);
+  card1Container.append(img1, container1);
+  card2Container.append(img2, container2);
+  card3Container.append(img3, container3);
+  card4Container.append(img4, container4);
+  card5Container.append(img5, container5);
+  card6Container.append(img6, container6);
+  card7Container.append(img7, container7);
 
   leftContainer.append(card1Container, card2Container, card3Container, card4Container, card5Container, card6Container, card7Container);
 
