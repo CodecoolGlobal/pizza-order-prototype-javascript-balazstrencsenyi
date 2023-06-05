@@ -1,5 +1,10 @@
-import { createDom } from "createDom.js"
+
+import { fetchPics } from "./fetchPictures.js"
+
 const root = document.querySelector('#root')
 function main(){
- root.append(createDom())
+
+ fetchPics()
 }
+
+main()
