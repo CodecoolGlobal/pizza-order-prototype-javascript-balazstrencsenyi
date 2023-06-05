@@ -53,13 +53,14 @@ header {
   align-items: center;
   width: 30%;
   border-left: solid 1px rgb(255, 255, 255);
+
 }
 
 form {
   display: flex;
   flex-direction: column;
   margin-top: 50px;
-  gap: 7px;
+  gap: 10px;
 
 }
 
