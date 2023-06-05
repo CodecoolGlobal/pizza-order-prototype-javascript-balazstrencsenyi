@@ -1,19 +1,15 @@
+import { fetchPics } from "./fetchPictures.js";
+import { createHeader, createLeftContainer, createRightContainer } from "./createDom.js";
+import { saveData } from "./saveData.js";
+import { formHandler } from "./formHandler.js";
 
-import { fetchPics } from "./fetchPictures.js"
-import { createHeader, createLeftContainer, createRightContainer } from "./createDom.js"
-import { saveData } from "./saveData.js"
-
-const root = document.querySelector('#root')
-function main(){
- const header = createHeader() 
- const leftContainer = createLeftContainer()
- const rightContainer = createRightContainer()
- /*fetchPics() gives err message*/
- root.append(header, leftContainer, rightContainer)
+const root = document.querySelector("#root");
+function main() {
+  root.append(createHeader(), createLeftContainer(), createRightContainer());
 }
 
 window.onload = () => {
   main();
-  saveData()
-  fetchPics()
+  saveData();
+  fetchPics();
 };
