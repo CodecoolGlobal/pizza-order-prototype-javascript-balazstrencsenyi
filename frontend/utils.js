@@ -13,12 +13,22 @@ export function createEl(tag, options) {
   return el;
 }
 
+
+//coffee object get
 export async function get(url){
   const res = await fetch(url)
   const data = await res.json()
   return data
 }
 
+//coffee pics blob(download)
+export async function getImage(url) {
+  const response = await fetch(url);
+  const imageBlob = await response.blob();
+  return URL.createObjectURL(imageBlob);
+}
+
+//orders post
 export async function post(url, data){
   const use = await fetch(url, {
     method: "POST",
@@ -30,3 +40,4 @@ export async function post(url, data){
   const res = await use.json()
   return res
 }
+
