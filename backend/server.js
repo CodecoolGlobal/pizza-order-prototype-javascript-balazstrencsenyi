@@ -1,48 +1,49 @@
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
+const express = require("express");
+const fs = require("fs");
+const path = require("path");
 const app = express();
 const PORT = 3000;
-const upload = require('express-fileupload')
+const upload = require("express-fileupload");
 
-const FE_FS_PATH = path.join(__dirname, '..', 'frontend');
+const FE_FS_PATH = path.join(__dirname, "..", "frontend");
 const ordersFilePath = path.join(__dirname, "data");
-const coffeePicturesDir = path.join(__dirname, 'media');
+const coffeePicturesDir = path.join(__dirname, "media");
 
 app.use(express.static(FE_FS_PATH));
 app.use(express.json());
 
-// Megrendelők mentése
-
-let currentMaxId = 0; 
+let currentMaxId = 0;
 app.post("/orders/:name", (req, res) => {
   const formData = req.body;
   const name = decodeURIComponent(req.params.name);
 
   if (!formData) {
-    return res.status(400).send("Hiányzó űrlap adatok");
+    return res.status(400).send("Missing form data.");
   }
 
-  currentMaxId++; 
-
+  currentMaxId++;
   const customerData = {
     id: currentMaxId,
-    formData: formData
+    formData: formData,
   };
 
   const fileName = `${name.replace(/\s+/g, "_")}_${currentMaxId}.json`;
   const newFilePath = path.join(__dirname, "data", fileName);
 
-  fs.writeFile(newFilePath, JSON.stringify(customerData, null, 2), "utf8", (err) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send("Hiba: nem sikerült menteni");
+  fs.writeFile(
+    newFilePath,
+    JSON.stringify(customerData, null, 2),
+    "utf8",
+    (err) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send("Error: It can't saved");
+      }
+
+      return res.send("Saved");
     }
-
-    return res.send("Mentve");
-  });
+  );
 });
-
 
 app.get("/orders", (req, res) => {
   fs.readdir(ordersFilePath, (err, files) => {

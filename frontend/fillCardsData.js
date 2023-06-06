@@ -27,7 +27,7 @@ export async function fillCardsData() {
     h6.innerHTML = item.price;
 
     const upCon = eval(`upCon${index + 1}`);
-    const container = eval(`container${index + 1}`)
+    const container = eval(`container${index + 1}`);
 
     upCon.prepend(h1, h5);
     container.prepend(h6);

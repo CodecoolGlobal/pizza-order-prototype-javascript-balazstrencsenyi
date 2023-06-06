@@ -7,5 +7,4 @@ export async function fetchPics() {
     const imageObjectURL = await getImage(imageUrl);
     imageUrls.push(imageObjectURL);
   }
-
 }
