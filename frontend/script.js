@@ -6,7 +6,7 @@ import { fillCardsData } from "./fillCardsData.js";
 
 const root = document.querySelector("#root");
 function main() {
-  root.append(createHeader(), createLeftContainer(), createRightContainer());
+  root.append(createHeader(), createLeftContainer());
 }
 
 window.onload = () => {
@@ -14,4 +14,5 @@ window.onload = () => {
   saveData();
   fetchPics();
   fillCardsData()
+  formHandler()
 };

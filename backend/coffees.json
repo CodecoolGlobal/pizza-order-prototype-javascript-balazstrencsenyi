@@ -1,30 +1,37 @@
 [
   {
     "name": "Breve Coffe",
-    "type": "A breve, also known as a breve latte or a caffe breve, is an espresso based coffee drink."
+    "type": "A breve, also known as a breve latte or a caffe breve, is an espresso based coffee drink.",
+    "price": "2$"
   },
   {
     "name": "Cafe Au Lait",
-    "type": "Café au lait is coffee with hot milk added. It differs from white coffee, which is coffee with cold milk or other whiteners added."
+    "type": "Café au lait is coffee with hot milk added. It differs from white coffee, which is coffee with cold milk or other whiteners added.",
+    "price": "3$"
   },
   {
     "name": "Iced Coffe",
-    "type": "Iced coffee is a coffee beverage served cold. It may be prepared either by brewing coffee normally (i.e. carafe, French press, etc.) and then serving it over ice or in cold milk or by brewing the coffee cold."
+    "type": "Iced coffee is a coffee beverage served cold. It may be prepared either by brewing coffee normally (i.e. carafe, French press, etc.) and then serving it over ice or in cold milk or by brewing the coffee cold.",
+    "price": "2$"
   },
   {
     "name": "Espresso Con Panna",
-    "type": "Espresso con panna, which means 'espresso with cream' in Italian, is a single or double shot of espresso"
+    "type": "Espresso con panna, which means 'espresso with cream' in Italian, is a single or double shot of espresso",
+    "price": "1$"
   },
   {
     "name": "Flat White",
-    "type": "A flat white is a coffee drink consisting of espresso with microfoam (steamed milk with small, fine bubbles and a glossy or velvety consistency)."
+    "type": "A flat white is a coffee drink consisting of espresso with microfoam (steamed milk with small, fine bubbles and a glossy or velvety consistency).",
+    "price": "3$"
   },
   {
     "name": "Frappe",
-    "type": "Frappé coffee, an iced coffee beverage made from instant coffee originally from Greece"
+    "type": "Frappé coffee, an iced coffee beverage made from instant coffee originally from Greece",
+    "price": "2$"
   },
   {
     "name": "Americano",
-    "type": "Caffè Americano, a style of coffee prepared by adding hot water to espresso"
+    "type": "Caffè Americano, a style of coffee prepared by adding hot water to espresso",
+    "price": "1$"
   }
 ]
