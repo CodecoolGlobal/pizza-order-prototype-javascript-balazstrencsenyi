@@ -12,6 +12,7 @@ const coffeePicturesDir = path.join(__dirname, "media");
 app.use(express.static(FE_FS_PATH));
 app.use(express.json());
 
+const date = new Date()
 let currentMaxId = 0;
 app.post("/orders/:name", (req, res) => {
   const formData = req.body;
@@ -20,10 +21,10 @@ app.post("/orders/:name", (req, res) => {
   if (!formData) {
     return res.status(400).send("Missing form data.");
   }
-
   currentMaxId++;
   const customerData = {
     id: currentMaxId,
+    date: date,
     formData: formData,
   };
 

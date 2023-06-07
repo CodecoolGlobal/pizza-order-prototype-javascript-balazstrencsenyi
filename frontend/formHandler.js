@@ -1,2 +1,33 @@
 import { createRightContainer } from "./createDom.js";
+export function formHandler() {
+  const form = document.querySelector("#form");
+  const buttons = document.querySelectorAll(".add");
 
+  for (const button of buttons) {
+    button.addEventListener("click", () => {
+      
+      const parentDiv = button.parentElement; // A gomb szülő div elemének megtalálása
+      const grandparentDiv = parentDiv.parentElement; 
+      
+      const h1 = grandparentDiv.querySelector("h1"); 
+      const h6 = grandparentDiv.querySelector("h6");
+      const amount = grandparentDiv.querySelector("input")
+      
+      const clonedH1 = h1.cloneNode(true);
+      clonedH1.name = "name"
+      clonedH1.id = "input-type"
+      const clonedH6 = h6.cloneNode(true);
+      clonedH6.name = "Piece & price"
+      clonedH6.id = "input-price"
+      
+      if (amount.value) {
+        const amountValue = parseInt(amount.value);
+        const result = parseInt(clonedH6.textContent) * amountValue;
+        clonedH6.innerHTML = "Amount: " + amountValue+" piece <br>"+"Total price "+result+"$";
+      }
+      
+      form.prepend(clonedH6);
+      form.prepend(clonedH1); 
+    });
+  }
+}

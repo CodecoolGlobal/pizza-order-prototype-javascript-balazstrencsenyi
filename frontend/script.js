@@ -6,10 +6,11 @@ import {
 } from "./createDom.js";
 import { saveData } from "./saveData.js";
 import { fillCardsData } from "./fillCardsData.js";
+import { formHandler } from "./formHandler.js";
 
 const root = document.querySelector("#root");
 function main() {
-  root.append(createHeader(), createLeftContainer(),createRightContainer());
+  root.append(createHeader(), createLeftContainer(), createRightContainer());
 }
 
 window.onload = () => {
@@ -17,5 +18,6 @@ window.onload = () => {
   saveData();
   fetchPics();
   fillCardsData();
+  formHandler()
 
 };
