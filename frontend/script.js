@@ -7,6 +7,7 @@ import {
 import { saveData } from "./saveData.js";
 import { fillCardsData } from "./fillCardsData.js";
 import { formHandler } from "./formHandler.js";
+import { clearCart } from "./clearCart.js";
 
 const root = document.querySelector("#root");
 function main() {
@@ -18,6 +19,7 @@ window.onload = () => {
   saveData();
   fetchPics();
   fillCardsData();
-  formHandler()
+  formHandler();
+  clearCart()
 
 };

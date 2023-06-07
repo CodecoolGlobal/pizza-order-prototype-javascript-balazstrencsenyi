@@ -1,6 +1,5 @@
 import { createRightContainer } from "./createDom.js";
 export function formHandler() {
-  const form = document.querySelector("#form");
   const buttons = document.querySelectorAll(".add");
 
   for (const button of buttons) {
@@ -19,15 +18,16 @@ export function formHandler() {
       const clonedH6 = h6.cloneNode(true);
       clonedH6.name = "Piece & price"
       clonedH6.id = "input-price"
+      const orderCon = document.querySelector(".orderCon")
+      
       
       if (amount.value) {
         const amountValue = parseInt(amount.value);
         const result = parseInt(clonedH6.textContent) * amountValue;
-        clonedH6.innerHTML = "Amount: " + amountValue+" piece <br>"+"Total price "+result+"$";
+        clonedH6.innerHTML = "Amount: " + amountValue+" piece<br>"+"Total price "+result+"$";
       }
-      
-      form.prepend(clonedH6);
-      form.prepend(clonedH1); 
+      orderCon.append(clonedH1,clonedH6)
+  
     });
   }
 }

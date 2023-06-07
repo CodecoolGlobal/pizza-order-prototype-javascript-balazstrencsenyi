@@ -19,9 +19,11 @@ export function saveData() {
     // Újonnan hozzáadott elemek hozzáadása
     const h1 = document.querySelector("#input-type");
     const h6 = document.querySelector("#input-price");
+    const orderCon = document.querySelector(".orderCon")
 
-    newData["h1"] = h1.textContent;
-    newData["h6"] = h6.textContent;
+    newData["Product"] = orderCon.textContent
+    //newData["Type"] = h1.textContent;
+    //newData["Price & Amount"] = h6.textContent;
 
     await post(`/orders/${name}`, newData);
     form.reset();

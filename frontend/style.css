@@ -7,24 +7,47 @@
 
 #root {
   width: 100%;
-  height: 100%;
+  height: 120%;
   display: flex;
-  margin-top: 50px;
+  margin-top: 80px;
   background-color: #2f4f4e;
   color: white;
+  background: url(./pexels-adam-lukac-773958.jpg);
 
 }
-
-header {
+.logo{
+  width: 150px;
+  height: auto;
   position: absolute;
+  left: 10px;
+  margin-bottom: 15px;
+}
+header {
+  position: fixed;
   top: 0;
   width: 100%;
-  height: 50px;
-  border-bottom: solid 1px rgb(255, 255, 255);
+  height: 80px;
+  box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.585);
+  z-index: 2;
+  overflow: hidden;
+
+  /*border-bottom: solid 1px rgb(255, 255, 255);*/
   
 
 }
-
+.cartCon{
+  position: relative;
+  text-align: start;
+}
+.orderCon{
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
 #text {
   display: flex;
   justify-content: center;
@@ -37,7 +60,7 @@ header {
   font-weight: bold;
   font-style: italic;
   color: white;
-  background-color: #000000;
+  background-color: #1e1f18;
   font-family: 'Rajdhani', sans-serif;
   font-size: 50px;
 
@@ -51,7 +74,12 @@ header {
   width: 70%;
   height: 100%;
   gap: 20px;
-  background-color: #2f4f4e;
+  background-color: #1c161100;
+  /*background: url(./pexels-adam-lukac-773958.jpg);*/
+  background-size: cover;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.52);
+  z-index: 1;
+  padding: 20px;
 }
 
 #right-container {
@@ -60,15 +88,17 @@ header {
   justify-content: start;
   align-items: center;
   width: 30%;
-  border-left: solid 1px rgb(255, 255, 255);
-  
+  border-left: solid 2px #1e1f18;
+  /*background-color:  #1c1611;*/
+  background: url(./pexels-olena-bohovyk-3749174.jpg);
+  background-size: cover;
 
 }
 
 form {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 30px;
   width: 350px;
   height: fit-content;
   padding: 20px;
@@ -77,34 +107,71 @@ form {
   text-align: center;
 
   gap: 8px;
-  background-color: #f1dec985;
+  background-color: #f1dec946;
   border-radius: 10px;
-  border: solid 1px #ffff;
-}
+  /*border: solid 1px #ffff;*/
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.585);
 
+}
+.cart{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: auto;
+}
+.trash{
+  position: absolute;
+  top: 0;
+  right: 25px;
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+}
 form > input {
   margin-bottom: 10px;
- 
-  
 }
 
+.orderCon > h6 {
+  text-align: left;
+}
+
+h1{
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
 
 h5{
   margin-left: 20px;
   margin-right: 20px;
+  text-shadow: 1px 1px 2px black;
   
 }
 
 h6{
   font-weight: bold;
+  font-size: 20px;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+button{
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 #button1, #button2, #button3, #button4, #button5, #button6, #button7{
 color: rgb(255, 255, 255);
 font-weight: bold;
 background-color: #2C3639;
-
+cursor: pointer;
 }
+#button1:hover, #button2:hover, #button3:hover, #button4:hover, #button5:hover, #button6:hover, #button7:hover{
+  color: #2C3639;
+  font-weight: bold;
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  }
 
 
 #card1-container, #card2-container, #card3-container, #card4-container, #card5-container, #card6-container, #card7-container {
@@ -115,25 +182,24 @@ background-color: #2C3639;
   text-align: justify;
   text-align: center;
  
-  height: 380px;
-  width: 400px;
-  border: solid 1px rgb(255, 255, 255); 
+  height: 420px;
+  width: 380px;
+  /*border: solid 1px rgb(255, 255, 255); */
   border-radius: 10px;
-  margin-top: 50px;
-  background-color: #f1dec985;
+  margin-top: 0px;
+  background-color: #f1dec93f;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.585);
 }
 
 #container1, #container2, #container3, #container4, #container5, #container6, #container7 {
 color:#2C3639;
-
-
-
+display: flex;
 }
 
 #img1, #img2, #img3, #img4, #img5, #img6, #img7 {
-  width: 200px;
-  height: 200px;
-  margin-top: 40px;
+  width: 250px;
+  height: 250px;
+  margin-top: 20px;
   object-fit: cover;
   border-radius: 50%;
   
@@ -152,7 +218,7 @@ color:#2C3639;
 
 form > input {
   width: 100%;
-   height: 25px;
+  height: 25px;
   
 }
 
@@ -161,21 +227,14 @@ label {
   font-size: 20px;
  text-align: left;
 }
-
-#button {
-  width: 200px;
-  height: 30px;
-  background-color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  border-radius: 60%;
- 
-
+#submit{
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 20px;
 }
+#submit:hover{
+cursor: pointer;
+background-color: #1e1f18;
+color: white;
 
-#button:hover {
-  background-color: #0e191d;
-  color: white;
-  border-radius: 60%;
 }

@@ -3,6 +3,8 @@ import { createEl } from "./utils.js";
 export function createHeader() {
   const header = createEl("header", "header");
   const div = createEl("div", { id: "text", textContent: "Coffee Shop" });
+  const logo = createEl("img", { classList: "logo", src: "./logo.png" })
+  div.prepend(logo)
   header.append(div);
   return header;
 }
@@ -175,6 +177,21 @@ export function createRightContainer() {
   const rightContainer = createEl("div", { id: "right-container" });
   const form = createEl("form", { id: "form" });
 
+  const cartCon = createEl("div", {className: "cartCon"})
+  cartCon.innerHTML = "<h2>Cart:</h2>"
+
+  const orderCon = document.createElement("div")
+  orderCon.classList = "orderCon"
+
+  const trash = createEl("img", {className:"trash", src:"./trash.png"})
+
+  const cart = document.createElement("img")
+  cart.src = "./cart.png"
+  cart.classList = "cart"
+
+  cartCon.append(trash, cart)
+
+
   const labelname = createEl("label", {
     id: "label-name",
     textContent: "Name:",
@@ -246,9 +263,11 @@ export function createRightContainer() {
     name: "Phone",
   });
 
-  const button = createEl("button", { id: "submit", textContent: "Send" });
+  const button = createEl("button", { id: "submit", textContent: "Send Your Order" });
 
   form.append(
+    cartCon,
+    orderCon,
     labelname,
     inputName,
     labelZip,
