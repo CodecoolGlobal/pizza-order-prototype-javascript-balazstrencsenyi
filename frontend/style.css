@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 #root {
@@ -11,6 +12,7 @@
   margin-top: 50px;
   background-color: #2f4f4e;
   color: white;
+
 }
 
 header {
@@ -19,6 +21,7 @@ header {
   width: 100%;
   height: 50px;
   border-bottom: solid 1px rgb(255, 255, 255);
+  
 
 }
 
@@ -26,13 +29,18 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: justify;
+  text-align: center;
   width: 100%;
   height: 100%;
-  font-size: 25px;
+ 
   font-weight: bold;
   font-style: italic;
   color: white;
-  background-color: #0e191d;
+  background-color: #000000;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 50px;
+
 }
 
 #left-container {
@@ -53,6 +61,7 @@ header {
   align-items: center;
   width: 30%;
   border-left: solid 1px rgb(255, 255, 255);
+  
 
 }
 
@@ -60,30 +69,69 @@ form {
   display: flex;
   flex-direction: column;
   margin-top: 50px;
-  gap: 8px;
+  width: 300px;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-align: center;
 
+  gap: 8px;
+  background-color: #f1dec985;
+  border-radius: 8%;
+  border: solid 1px #ffff;
 }
 
 form > input {
   margin-bottom: 10px;
+ 
+  
 }
+
+
+h5{
+  margin-left: 20px;
+  margin-right: 20px;
+  
+}
+
+#button1, #button2, #button3, #button4, #button5, #button6, #button7{
+color: rgb(255, 255, 255);
+font-weight: bold;
+background-color: #2C3639;
+
+}
+
 
 #card1-container, #card2-container, #card3-container, #card4-container, #card5-container, #card6-container, #card7-container {
   display: flex;
   flex-direction: column;
   justify-content: end;
   align-items: center;
-
+  text-align: justify;
+  text-align: center;
+ 
   height: 380px;
   width: 400px;
   border: solid 1px rgb(255, 255, 255); 
+  border-radius: 20%;
   margin-top: 50px;
+  background-color: #f1dec985;
+}
+
+#container1, #container2, #container3, #container4, #container5, #container6, #container7 {
+color:#2C3639;
+
+
+
 }
 
 #img1, #img2, #img3, #img4, #img5, #img6, #img7 {
   width: 200px;
   height: 200px;
+  margin-top: 40px;
   object-fit: cover;
+  border-radius: 50%;
+  
+ 
 }
 
 #container1, #container2, #container3, #container4, #container5, #container6, #container7 {
@@ -93,11 +141,18 @@ form > input {
   width: 100%;
   height: 20%;
   gap: 20px;
+
 }
 
 input {
   width: 200px;
+   margin: auto;
   
+}
+
+
+#input-name{
+  text-align: center;
 }
 
 label {
@@ -111,9 +166,13 @@ label {
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  border-radius: 60%;
+ 
+
 }
 
 #button:hover {
   background-color: #0e191d;
   color: white;
+  border-radius: 60%;
 }
