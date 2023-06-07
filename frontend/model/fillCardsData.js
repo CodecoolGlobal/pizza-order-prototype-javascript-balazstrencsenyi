@@ -1,4 +1,4 @@
-import { get } from "./utils.js";
+import { get } from "../utils/utils.js";
 
 export async function fillCardsData() {
   const upCon1 = document.querySelector("#card1-container");

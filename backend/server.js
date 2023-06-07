@@ -12,7 +12,7 @@ const coffeePicturesDir = path.join(__dirname, "media");
 app.use(express.static(FE_FS_PATH));
 app.use(express.json());
 
-const date = new Date()
+const date = new Date();
 let currentMaxId = 0;
 app.post("/orders/:name", (req, res) => {
   const formData = req.body;

@@ -1,4 +1,4 @@
-import { getImage } from "./utils.js";
+import { getImage } from "../utils/utils.js";
 
 export async function fetchPics() {
   const imageUrls = [];
