@@ -21,7 +21,7 @@ export function formHandler() {
       orderCon.classList.remove("orderCon")
       orderCon.classList.add("newOrderCon")
 
-      if (amount.value) {
+      if (amount.value&&amount.value>0) {
         const amountValue = parseInt(amount.value);
         const result = parseInt(clonedH6.textContent) * amountValue;
         clonedH6.innerHTML =
