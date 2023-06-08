@@ -15,6 +15,12 @@
   background: url("../media/pexels-adam-lukac-773958.jpg");
 
 }
+input{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+input::placeholder{
+  font-weight: 500;
+}
 
 .logo {
   width: 150px;
@@ -204,6 +210,10 @@ button {
 #container1, #container2, #container3, #container4, #container5, #container6, #container7 {
   color: #2C3639;
   display: flex;
+}
+
+#container1>input, #container2>input, #container3>input, #container4>input, #container5>input, #container6>input, #container7>input {
+  width: 80px;
 }
 
 #img1, #img2, #img3, #img4, #img5, #img6, #img7 {

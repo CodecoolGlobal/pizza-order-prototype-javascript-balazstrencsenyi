@@ -20,7 +20,10 @@ export function saveData() {
     const orderCon = document.querySelector(".orderCon");
 
     newData["Product"] = orderCon.textContent;
-
+    if(orderCon.textContent === ""){
+      alert("Please select a product!")
+    }
+    
     await post(`/orders/${name}`, newData);
     form.reset();
   });

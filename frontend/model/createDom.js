@@ -22,7 +22,7 @@ export function createLeftContainer() {
     id: "input1",
     type: "number",
     name: "coffee",
-    placeholder: "Enter the amount",
+    placeholder: "Amount",
   });
   const button1 = createEl("button", {
     className: "add",
@@ -42,7 +42,7 @@ export function createLeftContainer() {
     id: "input2",
     type: "number",
     name: "coffee",
-    placeholder: "Enter the amount",
+    placeholder: "Amount",
   });
   const button2 = createEl("button", {
     className: "add",
@@ -62,13 +62,13 @@ export function createLeftContainer() {
     id: "input3",
     type: "number",
     name: "coffee",
-    placeholder: "Enter the amount",
+    placeholder: "Amount",
   });
   const button3 = createEl("button", {
     className: "add",
     id: "button3",
     type: "submit",
-    textContent: "Add to cart",
+    textContent: "Amount",
   });
   container3.append(input3, button3);
 
@@ -82,13 +82,13 @@ export function createLeftContainer() {
     id: "input4",
     type: "number",
     name: "coffee",
-    placeholder: "Enter the amount",
+    placeholder: "Amount",
   });
   const button4 = createEl("button", {
     className: "add",
     id: "button4",
     type: "submit",
-    textContent: "Add to cart",
+    textContent: "Amount",
   });
   container4.append(input4, button4);
 
@@ -102,7 +102,7 @@ export function createLeftContainer() {
     id: "input5",
     type: "number",
     name: "coffee",
-    placeholder: "Enter the amount",
+    placeholder: "Amount",
   });
   const button5 = createEl("button", {
     className: "add",
@@ -122,7 +122,7 @@ export function createLeftContainer() {
     id: "input6",
     type: "number",
     name: "coffee",
-    placeholder: "Enter the amount",
+    placeholder: "Amount",
   });
   const button6 = createEl("button", {
     className: "add",
@@ -142,7 +142,7 @@ export function createLeftContainer() {
     id: "input7",
     type: "number",
     name: "coffee",
-    placeholder: "Enter the amount",
+    placeholder: "Amount",
   });
   const button7 = createEl("button", {
     className: "add",
