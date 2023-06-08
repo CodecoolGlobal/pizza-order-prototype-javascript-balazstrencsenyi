@@ -6,19 +6,21 @@
 }
 
 #root {
+  display: flex;
   width: 100%;
   height: 120%;
-  display: flex;
   margin-top: 80px;
   background-color: #2f4f4e;
   color: white;
   background: url("../media/pexels-adam-lukac-773958.jpg");
 
 }
-input{
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+input {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-input::placeholder{
+
+input::placeholder {
   font-weight: 500;
 }
 
@@ -38,10 +40,6 @@ header {
   box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.585);
   z-index: 2;
   overflow: hidden;
-
-  /*border-bottom: solid 1px rgb(255, 255, 255);*/
-
-
 }
 
 .cartCon {
@@ -57,6 +55,20 @@ header {
   flex-direction: column;
   justify-content: start;
   align-items: start;
+}
+
+.newOrderCon {
+  position: relative;
+  width: 100%;
+  padding: 5px;
+  background-color: #1e1f1851;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  border-radius: 5px;
+  border: #2f4f4ec5 2px solid;
 }
 
 #text {
@@ -86,7 +98,6 @@ header {
   height: 100%;
   gap: 20px;
   background-color: #1c161100;
-  /*background: url(./pexels-adam-lukac-773958.jpg);*/
   background-size: cover;
   box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.52);
   z-index: 1;
@@ -100,7 +111,6 @@ header {
   align-items: center;
   width: 30%;
   border-left: solid 2px #1e1f18;
-  /*background-color:  #1c1611;*/
   background: url("../media/pexels-olena-bohovyk-3749174.jpg");
   background-size: cover;
 
@@ -116,11 +126,9 @@ form {
   margin-right: 20px;
   margin-left: 20px;
   text-align: center;
-
   gap: 8px;
   background-color: #f1dec946;
   border-radius: 10px;
-  /*border: solid 1px #ffff;*/
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.585);
 
 }
@@ -159,7 +167,6 @@ h5 {
   margin-left: 20px;
   margin-right: 20px;
   text-shadow: 1px 1px 2px black;
-
 }
 
 h6 {
@@ -167,6 +174,7 @@ h6 {
   font-size: 20px;
   color: white;
   text-shadow: 1px 1px 2px black;
+  text-align: left;
 }
 
 button {
@@ -200,7 +208,6 @@ button {
 
   height: 420px;
   width: 380px;
-  /*border: solid 1px rgb(255, 255, 255); */
   border-radius: 10px;
   margin-top: 0px;
   background-color: #f1dec93f;
@@ -222,8 +229,6 @@ button {
   margin-top: 20px;
   object-fit: cover;
   border-radius: 50%;
-
-
 }
 
 #container1, #container2, #container3, #container4, #container5, #container6, #container7 {
@@ -233,13 +238,11 @@ button {
   width: 100%;
   height: 20%;
   gap: 20px;
-
 }
 
 form>input {
   width: 100%;
   height: 25px;
-
 }
 
 
@@ -258,5 +261,4 @@ label {
   cursor: pointer;
   background-color: #1e1f18;
   color: white;
-
 }

@@ -4,7 +4,7 @@ export function formHandler() {
 
   for (const button of buttons) {
     button.addEventListener("click", () => {
-      const parentDiv = button.parentElement; // A gomb szülő div elemének megtalálása
+      const parentDiv = button.parentElement;
       const grandparentDiv = parentDiv.parentElement;
 
       const h1 = grandparentDiv.querySelector("h1");
@@ -17,7 +17,9 @@ export function formHandler() {
       const clonedH6 = h6.cloneNode(true);
       clonedH6.name = "Piece & price";
       clonedH6.id = "input-price";
-      const orderCon = document.querySelector(".orderCon");
+      const orderCon = document.querySelector("#orderCon");
+      orderCon.classList.remove("orderCon")
+      orderCon.classList.add("newOrderCon")
 
       if (amount.value) {
         const amountValue = parseInt(amount.value);

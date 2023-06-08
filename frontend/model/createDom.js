@@ -182,6 +182,7 @@ export function createRightContainer() {
 
   const orderCon = document.createElement("div");
   orderCon.classList = "orderCon";
+  orderCon.id = "orderCon" 
 
   const trash = createEl("img", { className: "trash", src: "../media/trash.png" });
 
