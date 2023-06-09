@@ -262,3 +262,10 @@ label {
   background-color: #1e1f18;
   color: white;
 }
+
+.admin{
+  z-index: 3;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

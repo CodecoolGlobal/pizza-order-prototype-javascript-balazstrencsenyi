@@ -1,13 +1,13 @@
-import { fetchPics } from "./controllers/fetchPictures.js";
+import { fetchPics } from "./scripts/controllers/fetchPictures.js";
 import {
   createHeader,
   createLeftContainer,
   createRightContainer,
-} from "./model/createDom.js";
-import { saveData } from "./controllers/saveData.js";
-import { fillCardsData } from "./model/fillCardsData.js";
-import { formHandler } from "./controllers/formHandler.js";
-import { clearCart } from "./controllers/clearCart.js";
+} from "./scripts/model/createDom.js";
+import { saveData } from "./scripts/controllers/saveData.js";
+import { fillCardsData } from "./scripts/model/fillCardsData.js";
+import { formHandler } from "./scripts/controllers/formHandler.js";
+import { clearCart } from "./scripts/controllers/clearCart.js";
 
 const root = document.querySelector("#root");
 function main() {

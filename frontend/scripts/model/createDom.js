@@ -4,8 +4,11 @@ export function createHeader() {
   const header = createEl("header", "header");
   const div = createEl("div", { id: "text", textContent: "Coffee Shop" });
   const logo = createEl("img", { classList: "logo", src: "../media/logo.png" });
+  const admin = createEl("a",{href:"/admin", className:"admin"})
+  const adminbtn = createEl("button",{innerHTML:"Admin"})
+  admin.append(adminbtn)
   div.prepend(logo);
-  header.append(div);
+  header.append(div, admin);
   return header;
 }
 

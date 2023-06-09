@@ -5,7 +5,6 @@ export function saveData() {
 
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
-    const name = document.querySelector("#input-name").value;
     const newData = {};
 
     const formElements = Array.from(form.elements);
@@ -24,7 +23,7 @@ export function saveData() {
       alert("Please select a product!")
     }
     
-    await post(`/orders/${name}`, newData);
+    await post(`/orders/`, newData);
     form.reset();
   });
 }
