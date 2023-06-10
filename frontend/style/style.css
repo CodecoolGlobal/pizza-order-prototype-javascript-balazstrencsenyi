@@ -202,6 +202,7 @@ button {
   font-weight: bold;
   background-color: #2C3639;
   cursor: pointer;
+  font-size: 15px;
 }
 
 .add:hover {
@@ -239,7 +240,8 @@ img {
   height: 250px;
   margin-top: 20px;
   object-fit: cover;
-  border-radius: 50px;
+  border-radius: 125px;
+  filter: drop-shadow(10px 10px 20px #000000);
 }
 
 #left-container > div > div{
