@@ -1,7 +1,7 @@
 import { post } from "../utils/utils.js";
 
 export function saveData() {
-  const form = document.querySelector("#form");
+  const form = document.querySelector("form");
 
   form.addEventListener("submit", async function (e) {
     e.preventDefault();

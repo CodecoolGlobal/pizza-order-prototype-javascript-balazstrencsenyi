@@ -43,50 +43,14 @@
   },
   {
     "id": 8,
-    "name": "test",
-    "type": "a",
-    "price": "1"
+    "name": "Ez nem kávé hanem macska",
+    "type": "Egy fekete gyász tele kullanccsal",
+    "price": "0 $"
   },
   {
     "id": 9,
-    "name": "test",
-    "type": "a",
-    "price": "1"
-  },
-  {
-    "id": 10,
-    "name": "ad",
-    "type": "sd",
-    "price": "1"
-  },
-  {
-    "id": 11,
-    "name": "sdawd",
-    "type": "sdwadwad",
-    "price": "sdwafdwfa"
-  },
-  {
-    "id": 12,
-    "name": "sdawdaw",
-    "type": "sdawdawd",
-    "price": "2"
-  },
-  {
-    "id": 13,
-    "name": "sdawd",
-    "type": "dwdwd",
-    "price": "2"
-  },
-  {
-    "id": 14,
-    "name": "sadwd",
-    "type": "dawdawd",
-    "price": "12"
-  },
-  {
-    "id": 15,
-    "name": "test",
-    "type": "sawdwa",
-    "price": "12"
+    "name": "Dominik",
+    "type": "Nagyon hangos, de szép és IMÁDOM",
+    "price": "∞"
   }
 ]

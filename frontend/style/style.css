@@ -130,7 +130,12 @@ form {
   background-color: #f1dec946;
   border-radius: 10px;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.585);
+  transform: translateX(0%);
+  transition: all 1s ease;
 
+}
+.hideForm{
+  transform: translateX(200%);
 }
 
 .cart {
@@ -154,27 +159,36 @@ form>input {
   margin-bottom: 10px;
 }
 
-.orderCon>h6 {
+.orderCon {
   text-align: left;
 }
 
 h1 {
-  color: white;
-  text-shadow: 1px 1px 2px black;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 1px black;
+  font-weight: 700;
+  background-color:#1a1b159d;
+  width: 100%;
 }
 
 h5 {
-  margin-left: 20px;
-  margin-right: 20px;
-  text-shadow: 1px 1px 2px black;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  background-color:#1a1b159d;
+  text-align: justify;
+  padding: 5px;
+  width: 100%
 }
 
 h6 {
   font-weight: bold;
-  font-size: 20px;
-  color: white;
-  text-shadow: 1px 1px 2px black;
-  text-align: left;
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  background-color: #1a1b159d;
+  border-radius: 5px;
+  width: 70px;
+  height: 30px;
 }
 
 button {
@@ -183,14 +197,14 @@ button {
   border-radius: 5px;
 }
 
-#button1, #button2, #button3, #button4, #button5, #button6, #button7 {
+.add{
   color: rgb(255, 255, 255);
   font-weight: bold;
   background-color: #2C3639;
   cursor: pointer;
 }
 
-#button1:hover, #button2:hover, #button3:hover, #button4:hover, #button5:hover, #button6:hover, #button7:hover {
+.add:hover {
   color: #2C3639;
   font-weight: bold;
   background-color: rgb(255, 255, 255);
@@ -198,7 +212,7 @@ button {
 }
 
 
-#card1-container, #card2-container, #card3-container, #card4-container, #card5-container, #card6-container, #card7-container {
+#left-container>div {
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -212,26 +226,23 @@ button {
   margin-top: 0px;
   background-color: #f1dec93f;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.585);
+  overflow: hidden;
 }
 
-#container1, #container2, #container3, #container4, #container5, #container6, #container7 {
+#left-container > div > div{
   color: #2C3639;
   display: flex;
 }
 
-#container1>input, #container2>input, #container3>input, #container4>input, #container5>input, #container6>input, #container7>input {
-  width: 80px;
-}
-
-#img1, #img2, #img3, #img4, #img5, #img6, #img7 {
+img {
   width: 250px;
   height: 250px;
   margin-top: 20px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 50px;
 }
 
-#container1, #container2, #container3, #container4, #container5, #container6, #container7 {
+#left-container > div > div{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -268,4 +279,20 @@ label {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+#left-container > div > div > input{
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: 500;
+  background-color: #1a1b159d;
+  color: white;
+  border: none;
+}
+#left-container > div > div > button{
+  width: 100px;
+  height: 30px;
 }

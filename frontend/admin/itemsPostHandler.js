@@ -2,17 +2,37 @@ export function itemsPostHandler() {
   const form = document.querySelector(".newCoffee");
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
-    const data = new FormData(form);
 
-    const fileInput = form.querySelector(".fileInput"); 
-    if (fileInput.files.length > 0) {
-      const file = fileInput.files[0];
-      data.append("fileInput", file); 
-      
+    const inputFile = document.querySelector(".fileInput");
+    const file = inputFile.files[0];
+    if (!file) {
+      alert("Error: No image selected.");
+      return;
     }
+
+    const data = new FormData(form);
+    let isFormIncomplete = false;
+    for (const value of data.values()) {
+      if (value === "") {
+        isFormIncomplete = true;
+        break;
+      }
+    }
+    if (isFormIncomplete) {
+      alert("Error: Incomplete form data.");
+      return;
+    }
+
     const req = await fetch("/coffee/", {
       method: "POST",
       body: data,
-  })
+    });
+
+    const picData = new FormData();
+    picData.append("file", file);
+    const picreq = await fetch("/coffee/pictures", {
+      method: "POST",
+      body: picData,
+    });
   });
 }

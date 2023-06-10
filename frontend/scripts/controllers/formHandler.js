@@ -1,9 +1,20 @@
-import { createRightContainer } from "../model/createDom.js";
+import { createEl } from "../utils/utils.js";
+
 export function formHandler() {
   const buttons = document.querySelectorAll(".add");
+  let cartItems = [];
 
-  for (const button of buttons) {
+  buttons.forEach((button) => {
     button.addEventListener("click", () => {
+      const form = document.querySelector("form")
+      
+      const amountInputs = document.querySelectorAll("#left-container > div > div > input");
+      amountInputs.forEach((input) => {
+        if(input.value&&input.value != 0){
+          form.classList.remove("hideForm")
+        };
+      });
+
       const parentDiv = button.parentElement;
       const grandparentDiv = parentDiv.parentElement;
 
@@ -17,11 +28,9 @@ export function formHandler() {
       const clonedH6 = h6.cloneNode(true);
       clonedH6.name = "Piece & price";
       clonedH6.id = "input-price";
-      const orderCon = document.querySelector("#orderCon");
-      orderCon.classList.remove("orderCon")
-      orderCon.classList.add("newOrderCon")
+      const cartCon = document.querySelector(".orderCon");
 
-      if (amount.value&&amount.value>0) {
+      if (amount.value && amount.value > 0) {
         const amountValue = parseInt(amount.value);
         const result = parseInt(clonedH6.textContent) * amountValue;
         clonedH6.innerHTML =
@@ -31,8 +40,31 @@ export function formHandler() {
           "Total price " +
           result +
           "$";
+
+        const existingItem = cartItems.find((item) => item.name === clonedH1.innerHTML);
+
+        if (existingItem) {
+          existingItem.amount = amountValue;
+          existingItem.totalPrice = result;
+        } else {
+          cartItems.push({
+            name: clonedH1.innerHTML,
+            amount: amountValue,
+            totalPrice: result,
+          });
+        }
+
+        cartCon.innerHTML = "";
+        cartItems.forEach((item) => {
+          const itemContainer = createEl("div", { className: "cart-item" });
+          const itemName = createEl("h4", { textContent: item.name });
+          const itemAmount = createEl("p", { textContent: "Amount: " + item.amount });
+          const itemTotalPrice = createEl("p", { textContent: "Total price: " + item.totalPrice + "$" });
+
+          itemContainer.append(itemName, itemAmount, itemTotalPrice);
+          cartCon.appendChild(itemContainer);
+        });
       }
-      orderCon.append(clonedH1, clonedH6);
     });
-  }
+  });
 }

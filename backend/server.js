@@ -8,7 +8,7 @@ const upload = require("express-fileupload");
 const FE_FS_PATH = path.join(__dirname, "..", "frontend");
 const ordersFilePath = path.join(__dirname, "data");
 const coffeePicturesDir = path.join(__dirname, "media");
-const loginPath = path.join(__dirname,"admin.json")
+const loginPath = path.join(__dirname, "admin.json");
 const coffeePath = "./coffees.json";
 
 app.use(express.static(FE_FS_PATH));
@@ -56,14 +56,6 @@ app.post("/login", (req, res) => {
   });
 });
 
-
-const coffee = {
-"id": 1,
-"name": "Breve Coffee",
-"type": "A breve, also known as a breve latte or a caffe breve, is an espresso based coffee drink.",
-"price": "2 $"
-}
-
 app.post("/coffee/", (req, res) => {
   const formData = req.body;
 
@@ -108,20 +100,45 @@ app.post("/coffee/", (req, res) => {
           return res.status(500).send("Error: Unable to write file.");
         }
 
-        const fileInput = req.files.fileInput;
-        const fileName = `${currentMaxId}.jpg`;
-        const filePath = path.join(coffeePicturesDir, fileName);
-
-        fileInput.mv(filePath, (err) => {
-          if (err) {
-            console.log(err);
-            return res.status(500).send("Error: Unable to move file.");
-          }
-
-          return res.sendStatus(200);
-        });
+        return res.sendStatus(200);
       }
     );
+  });
+});
+
+app.post("/coffee/pictures", (req, res) => {
+  if (!req.files || !req.files.file) {
+    return res.status(400).send("Error: No file uploaded.");
+  }
+
+  const pic = req.files.file;
+  const coffeePicturesDir = path.join(__dirname, "media");
+  fs.readdir(coffeePicturesDir, (err, files) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send("Error: Unable to read directory.");
+    }
+
+    let currentMaxId = 0;
+    files.forEach((file) => {
+      const fileId = parseInt(path.parse(file).name);
+      if (!isNaN(fileId) && fileId > currentMaxId) {
+        currentMaxId = fileId;
+      }
+    });
+
+    const newId = currentMaxId + 1;
+    const newName = `${newId}.jpg`;
+    const newFilePath = path.join(coffeePicturesDir, newName);
+
+    pic.mv(newFilePath, (err) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send("Error: Unable to move file.");
+      }
+
+      return res.status(200).send("File uploaded and renamed successfully.");
+    });
   });
 });
 
@@ -187,7 +204,6 @@ app.post("/orders/", (req, res) => {
   });
 });
 
-
 app.get("/orders", (req, res) => {
   fs.readdir(ordersFilePath, (err, files) => {
     if (err) {
@@ -232,7 +248,6 @@ app.get("/coffees/pictures/:filename", async (req, res) => {
     res.status(404).send("File not found");
   }
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}/`);
