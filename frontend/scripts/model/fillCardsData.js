@@ -2,19 +2,22 @@ import { get, createEl } from "../utils/utils.js";
 import { formHandler } from "../controllers/formHandler.js";
 import { refreshAmInput } from "../controllers/refreshAmInput.js";
 
-
 export async function fillCardsData() {
   const leftContainer = document.querySelector("#left-container");
+  const availableIds = await get("/coffees/availableIds");
+
   const data = await get("/coffees");
 
-  data.forEach((item, index) => {
+  availableIds.forEach((id, index) => {
+    const coffee = data.find((item) => item.id === id);
+
     const cardContainer = createEl("div", {
       id: `card${index + 1}-container`,
       class: "card",
     });
     const img = createEl("img", {
       id: `img${index + 1}`,
-      src: `/coffees/pictures/${index + 1}.jpg`,
+      src: `/coffees/pictures/${id}.jpg`,
     });
     const container = createEl("div", { id: `container${index + 1}` });
     const input = createEl("input", {
@@ -29,16 +32,16 @@ export async function fillCardsData() {
       type: "submit",
       textContent: "Add to cart",
     });
-    const h1 = createEl("h1", { textContent: item.name });
-    const h5 = createEl("h5", { textContent: item.type });
-    const h6 = createEl("h6", { textContent: item.price });
+    const h1 = createEl("h1", { textContent: coffee.name });
+    const h5 = createEl("h5", { textContent: coffee.type });
+    const h6 = createEl("h6", { textContent: coffee.price });
 
     container.append(h6, input, button);
     cardContainer.append(img, container);
-    cardContainer.prepend(h1, h5)
+    cardContainer.prepend(h1, h5);
     leftContainer.appendChild(cardContainer);
   });
-  formHandler()
-  refreshAmInput()
-}
 
+  formHandler();
+  refreshAmInput();
+}

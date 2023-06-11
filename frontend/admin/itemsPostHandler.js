@@ -1,3 +1,4 @@
+import { fillContent } from "./fillConItems.js";
 export function itemsPostHandler() {
   const form = document.querySelector(".newCoffee");
   form.addEventListener("submit", async function (e) {
@@ -34,5 +35,10 @@ export function itemsPostHandler() {
       method: "POST",
       body: picData,
     });
+    if(picreq.status===200){
+      alert("Saved")
+    }
+    fillContent()
   });
+ 
 }

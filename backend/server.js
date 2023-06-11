@@ -9,11 +9,25 @@ const FE_FS_PATH = path.join(__dirname, "..", "frontend");
 const ordersFilePath = path.join(__dirname, "data");
 const coffeePicturesDir = path.join(__dirname, "media");
 const loginPath = path.join(__dirname, "admin.json");
-const coffeePath = "./coffees.json";
+const coffeesFilePath = "./coffees.json";
 
 app.use(express.static(FE_FS_PATH));
 app.use(express.json());
 app.use(upload());
+
+app.get("/coffees/availableIds", (req, res) => {
+  fs.readFile(coffeesFilePath, "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Failed to fetch coffee data.");
+    }
+
+    const coffees = JSON.parse(data);
+    const availableIds = coffees.map((coffee) => coffee.id);
+
+    res.status(200).json(availableIds);
+  });
+});
 
 app.get("/admin", (req, res) => {
   const adminHTML = `
@@ -63,7 +77,7 @@ app.post("/coffee/", (req, res) => {
     return res.status(400).send("Missing form data.");
   }
 
-  fs.readFile(path.join(__dirname, coffeePath), "utf8", (err, data) => {
+  fs.readFile(path.join(__dirname, coffeesFilePath), "utf8", (err, data) => {
     if (err) {
       console.log(err);
       return res.status(500).send("Error: Unable to read file.");
@@ -91,7 +105,7 @@ app.post("/coffee/", (req, res) => {
     coffees.push(coffeeData);
 
     fs.writeFile(
-      path.join(__dirname, coffeePath),
+      path.join(__dirname, coffeesFilePath),
       JSON.stringify(coffees, null, 2),
       "utf8",
       (err) => {
@@ -248,6 +262,45 @@ app.get("/coffees/pictures/:filename", async (req, res) => {
     res.status(404).send("File not found");
   }
 });
+
+const deletedItemsDir = path.join(__dirname, "deleted");
+
+app.delete("/coffees/:id", (req, res) => {
+  const id = req.params.id;
+  const imagePath = `${coffeePicturesDir}/${id}.jpg`;
+
+  const deletedItemDir = path.join(deletedItemsDir, id.toString());
+
+  fs.mkdirSync(deletedItemDir, { recursive: true });
+
+  fs.rename(imagePath, path.join(deletedItemDir, "image.jpg"), (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Failed to move the image to deleted items.");
+    }
+
+    fs.readFile(coffeesFilePath, "utf8", (err, data) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send("Failed to delete the coffee entry.");
+      }
+
+      const coffees = JSON.parse(data);
+      const updatedCoffees = coffees.filter((coffee) => coffee.id !== Number(id));
+
+      fs.writeFile(coffeesFilePath, JSON.stringify(updatedCoffees), (err) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).send("Failed to delete the coffee entry.");
+        }
+
+        res.status(200).send("Image and coffee entry deleted successfully.");
+      });
+    });
+  });
+});
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}/`);

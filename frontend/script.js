@@ -1,4 +1,4 @@
-import { fetchPics } from "./scripts/controllers/fetchPictures.js";
+
 import {
   createHeader,
   createLeftContainer,
@@ -16,7 +16,6 @@ function main() {
 window.onload = () => {
   main();
   saveData();
-  fetchPics();
   fillCardsData();
   clearCart();
 };
