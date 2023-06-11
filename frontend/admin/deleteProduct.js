@@ -4,7 +4,7 @@ export function deleteProduct(){
  const delForm = document.querySelector(".delForm")
  delForm.addEventListener("submit",async (e)=>{
     e.preventDefault()
-    fillContent()
+    
     
     const delInput = document.querySelector(".delInput").value
     const req = await fetch(`/coffees/${delInput}`, {
@@ -13,5 +13,6 @@ export function deleteProduct(){
     if(req.status===200){
         alert("Deleted id:"+delInput+" product")
     }
+    fillContent()
  })
 }

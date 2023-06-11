@@ -26,16 +26,17 @@ export function itemsPostHandler() {
 
     const req = await fetch("/coffee/", {
       method: "POST",
-      body: data,
+      body: data
     });
 
     const picData = new FormData();
     picData.append("file", file);
-    const picreq = await fetch("/coffee/pictures", {
+    const picReq = await fetch("/coffee/pictures", {
       method: "POST",
-      body: picData,
+      body: picData
     });
-    if(picreq.status===200){
+    form.reset()
+    if(picReq.status===200){
       alert("Saved")
     }
     fillContent()
