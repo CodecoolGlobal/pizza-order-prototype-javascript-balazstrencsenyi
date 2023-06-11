@@ -29,6 +29,20 @@ app.get("/coffees/availableIds", (req, res) => {
   });
 });
 
+app.get("/orders/availableIds", (req, res) => {
+  fs.readdir(ordersFilePath, "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Failed to fetch coffee data.");
+    }
+
+    const orders = JSON.parse(data);
+    const avOrderIds = orders.map((order) => order.id);
+
+    res.status(200).json(avOrderIds);
+  });
+});
+
 app.get("/admin", (req, res) => {
   const adminHTML = `
     <html>

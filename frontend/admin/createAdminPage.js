@@ -25,8 +25,11 @@ export function createAdminPage() {
     delForm.append(h2Del,delInput,delBtn)
     con.append(delForm)
 
-    const avProdListCon = createEl("div", {className:"avProdListCon"})
+    const avProdListCon = createEl("div",{className:"avProdListCon"})
     root.append(avProdListCon)
+
+    const orderListCon = createEl("div",{className:"orderListCon"})
+    root.append(orderListCon)
 
     back.append(backBtn)
     root.append(h1,back)
