@@ -8,6 +8,5 @@ function main(){
     
     root.append(h1,createAdminForm())
     adminLoginHandler()
-    
 }
 main()

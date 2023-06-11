@@ -218,7 +218,7 @@ app.post("/orders/", (req, res) => {
   });
 });
 
-app.get("/orders", (req, res) => {
+app.get("/orders/:id", (req, res) => {
   fs.readdir(ordersFilePath, (err, files) => {
     if (err) {
       console.error(err);

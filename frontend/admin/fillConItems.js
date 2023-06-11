@@ -1,4 +1,5 @@
 import { get,createEl } from "../scripts/utils/utils.js";
+import { removeBtnHandler } from "./removeBtnHandler.js";
 export async function fillContent() {
     const avProdListCon = document.querySelector(".avProdListCon");
     avProdListCon.innerHTML = ""
@@ -26,7 +27,7 @@ export async function fillContent() {
       });
       const name = createEl("p", { textContent: coffee.name });
       const price = createEl("p", { textContent: coffee.price });
-      const ids = createEl("p",{textContent: "id: "+coffee.id})
+      const ids = createEl("p",{className: "ids",textContent: "id: "+coffee.id})
   
       container.append(price, ids, button);
       cardContainer.append(img, container);
@@ -35,4 +36,5 @@ export async function fillContent() {
       const root = document.querySelector("#root")
       root.append(avProdListCon)
     });
+    removeBtnHandler()
 }
