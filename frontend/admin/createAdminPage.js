@@ -4,6 +4,7 @@ export function createAdminPage() {
     const newCoffee = createEl("form",{className:"newCoffee" })
     const coffeeName = createEl("input",{className:"coffeeName", placeholder:"Coffee Name", type:"text", name:"name"})
     const coffeeDesc = createEl("textarea", {className:"coffeeDesc", name:"type", placeholder:"Description"})
+    const components = createEl("textarea", {className:"coffeeDesc", name:"components", placeholder:"List of components (use ',' if add more than 1)"})
     const price = createEl("input", {type:"text",placeholder:"Price", className:"price", name:"price"})
     const image = createEl("input", {type:"file", className: "fileInput", name:"fileInput"})
     const button = createEl("button",{innerHTML:"SAVE"})
@@ -11,7 +12,7 @@ export function createAdminPage() {
     const root = document.getElementById("root")
     const backBtn = createEl("button",{innerHTML:"Go Back"})
     const back = createEl("a",{href:"/", className:"admin"})
-    newCoffee.append(coffeeName,coffeeDesc,price,image,button)
+    newCoffee.append(coffeeName,coffeeDesc,components,price,image,button)
     con.append(newCoffee)
 
     const h1 = createEl("h1", {innerHTML:"Coffee Admin Page"})

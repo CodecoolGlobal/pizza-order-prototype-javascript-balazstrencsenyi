@@ -115,7 +115,11 @@ app.post("/coffee/", (req, res) => {
       id: currentMaxId,
       ...formData,
     };
-
+    const comps =  coffeeData.components.split(",")
+    for(let i = 0; i < comps.length; i++){
+      comps[i] = [i+1, comps[i]]
+    }
+    coffeeData.components = comps
     coffees.push(coffeeData);
 
     fs.writeFile(
@@ -133,6 +137,59 @@ app.post("/coffee/", (req, res) => {
     );
   });
 });
+
+app.post('/coffee/:id/comps/:compId', (req, res) => {
+  const productId = parseInt(req.params.id);
+  const componentId = parseInt(req.params.compId);
+  const modifiedData = req.body;
+  console.log(modifiedData)
+
+  fs.readFile(path.join(__dirname, coffeesFilePath), 'utf8', (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send('Error: Unable to read file.');
+    }
+
+    const products = JSON.parse(data);
+    let product = null;
+
+    for (const item of products) {
+      if (item.id === productId) {
+        product = item;
+        break;
+      }
+    }
+
+    if (!product) {
+      return res.status(404).send('Product not found.');
+    }
+
+    const component = product.components.find((component) => component[0] === componentId);
+
+    if (!component) {
+      return res.status(404).send('Component not found.');
+    }
+
+    // Módosítsd a komponenst a modifiedData alapján
+    component[1] = modifiedData.name;
+
+    // Változtasd meg az eredeti terméket a módosított adatokkal
+    fs.writeFile(
+      path.join(__dirname, coffeesFilePath),
+      JSON.stringify(products, null, 2),
+      'utf8',
+      (err) => {
+        if (err) {
+          console.log(err);
+          return res.status(500).send('Error: Unable to write file.');
+        }
+
+        res.sendStatus(200);
+      }
+    );
+  });
+});
+
 
 app.post("/coffee/pictures", (req, res) => {
   if (!req.files || !req.files.file) {
@@ -169,8 +226,6 @@ app.post("/coffee/pictures", (req, res) => {
     });
   });
 });
-
-
 
 app.post("/orders/", (req, res) => {
   const formData = req.body;

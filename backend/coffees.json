@@ -43,8 +43,62 @@
   },
   {
     "id": 8,
-    "name": "asdaw",
-    "type": "wdwadwd",
-    "price": "2"
+    "name": "Mario Lazok",
+    "type": "dsfwa",
+    "components": [
+      [
+        1,
+        null
+      ],
+      [
+        2,
+        "sdawdawd"
+      ],
+      [
+        3,
+        "sdawda"
+      ],
+      [
+        4,
+        "sadwadwa"
+      ],
+      [
+        5,
+        "sdawdwa"
+      ],
+      [
+        6,
+        "sdawd"
+      ],
+      [
+        7,
+        null
+      ]
+    ],
+    "price": "2 $"
+  },
+  {
+    "id": 9,
+    "name": "Mario Lazok",
+    "type": "sadawdwad",
+    "components": [
+      [
+        1,
+        "kskaka"
+      ],
+      [
+        2,
+        " jsdhsdas"
+      ],
+      [
+        3,
+        "sadwdwaf "
+      ],
+      [
+        4,
+        " safawfawfawdffawdawd"
+      ]
+    ],
+    "price": "2 $"
   }
 ]
