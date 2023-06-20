@@ -16,14 +16,15 @@ export function saveData() {
 
     const h1 = document.querySelector("#input-type");
     const h6 = document.querySelector("#input-price");
-    const orderCon = document.querySelector("#orderCon");
+    const orderCon = document.querySelector(".orderCon");
 
     newData["Product"] = orderCon.textContent;
-    if(orderCon.textContent === ""){
-      alert("Please select a product!")
+    if (orderCon.textContent === "") {
+      alert("Please select a product!");
     }
-    
+
     await post(`/orders/`, newData);
     form.reset();
+    orderCon.innerHTML = "";
   });
 }

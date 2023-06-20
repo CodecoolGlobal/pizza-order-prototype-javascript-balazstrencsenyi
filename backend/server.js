@@ -297,6 +297,7 @@ app.post("/orders/", (req, res) => {
     const newFilePath = path.join(__dirname, "data", fileName);
 
     const customerData = {
+      status: "Active",
       id: currentMaxId,
       date: formattedDate,
       formData: formData,
