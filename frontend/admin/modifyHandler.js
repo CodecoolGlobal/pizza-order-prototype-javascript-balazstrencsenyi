@@ -10,11 +10,7 @@ export function modifyHandler() {
       const modifiesData = button.closest("div").querySelector("p").textContent;
       const compId = modifiesData.trim().split(",").shift()
       
-      const req = await fetch(`/coffee/${prodId}/comps/${compId}`, {method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: modifiesInput})
+      const req = await fetch(`/coffee/${prodId}/comps/${compId}/value/${modifiesInput}`, {method: 'POST'})
       fillContent()
       });
   }

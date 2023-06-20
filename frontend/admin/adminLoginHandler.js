@@ -3,6 +3,7 @@ import { createAdminPage } from "./createAdminPage.js";
 import { itemsPostHandler } from "./itemsPostHandler.js";
 import { fillContent } from "./fillConItems.js";
 import { removeBtnHandler } from "./removeBtnHandler.js";
+import { getOrders } from "./getOrders.js";
 export function adminLoginHandler() {
     const form = document.querySelector(".adminForm");
     form.addEventListener("submit", async function (e) {
@@ -25,6 +26,7 @@ export function adminLoginHandler() {
         deleteProduct()
         fillContent()
         removeBtnHandler()
+        root.append(await getOrders())
       } else {
         console.log(req)
         alert("Wrong Password");

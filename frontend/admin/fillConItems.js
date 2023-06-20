@@ -1,6 +1,7 @@
 import { get,createEl } from "../scripts/utils/utils.js";
 import { removeBtnHandler } from "./removeBtnHandler.js";
 import { modifyHandler } from "./modifyHandler.js";
+import { getOrders } from "./getOrders.js";
 export async function fillContent() {
     const avProdListCon = document.querySelector(".avProdListCon");
     avProdListCon.innerHTML = ""
@@ -26,7 +27,7 @@ export async function fillContent() {
       for(const key of coffee.components){
         const comp = createEl("div",{className:"comp"})
         const p = createEl("p",{textContent: key})
-        const compInput = createEl("input", {type:"text", name:"name", placeholder:"New value"})
+        const compInput = createEl("input", {type:"text", name:"component", placeholder:"New value"})
         const compBtn = createEl("button", {className:"modify", type:"submit", innerHTML:"Modify"})
         comp.append(p,compInput,compBtn)
         components.append(comp)
@@ -49,6 +50,7 @@ export async function fillContent() {
       const root = document.querySelector("#root")
       root.append(avProdListCon)
     });
+   
     removeBtnHandler()
     modifyHandler()
 }

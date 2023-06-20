@@ -29,19 +29,50 @@ app.get("/coffees/availableIds", (req, res) => {
   });
 });
 
-app.get("/orders/availableIds", (req, res) => {
-  fs.readdir(ordersFilePath, "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send("Failed to fetch coffee data.");
+app.get("/orders/availableIds", async (req, res) => {
+  try {
+    const files = await fs.promises.readdir(ordersFilePath, "utf8");
+    const jsonFiles = files.filter((file) => path.extname(file) === ".json");
+    const availableIds = [];
+
+    for (const file of jsonFiles) {
+      const filePath = path.join(ordersFilePath, file);
+      const data = await fs.promises.readFile(filePath, "utf8");
+      const order = JSON.parse(data);
+      availableIds.push(order.id);
     }
 
-    const orders = JSON.parse(data);
-    const avOrderIds = orders.map((order) => order.id);
+    res.status(200).json(availableIds);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Failed to fetch order data.");
+  }
+});
 
-    res.status(200).json(avOrderIds);
+
+app.get("/orders/:id", (req, res) => {
+  const id = req.params.id;
+  
+  const filename = `${id}.json`;
+  const filePath = path.join(ordersFilePath, filename);
+
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) {
+      if (err.code === "ENOENT") {
+        // Ha a fájl nem található, akkor az adott ID-jű rendelés nem létezik
+        return res.status(404).send("Order not found");
+      }
+      console.error(err);
+      return res.status(500).send("Error retrieving order");
+    }
+
+    const order = JSON.parse(data);
+    res.json(order);
   });
 });
+
+
+
 
 app.get("/admin", (req, res) => {
   const adminHTML = `
@@ -138,10 +169,10 @@ app.post("/coffee/", (req, res) => {
   });
 });
 
-app.post('/coffee/:id/comps/:compId', (req, res) => {
+app.post('/coffee/:id/comps/:compId/value/:value', (req, res) => {
   const productId = parseInt(req.params.id);
   const componentId = parseInt(req.params.compId);
-  const modifiedData = req.body;
+  const modifiedData = req.params.value
   console.log(modifiedData)
 
   fs.readFile(path.join(__dirname, coffeesFilePath), 'utf8', (err, data) => {
@@ -171,7 +202,7 @@ app.post('/coffee/:id/comps/:compId', (req, res) => {
     }
 
     // Módosítsd a komponenst a modifiedData alapján
-    component[1] = modifiedData.name;
+    component[1] = modifiedData;
 
     // Változtasd meg az eredeti terméket a módosított adatokkal
     fs.writeFile(
@@ -246,7 +277,7 @@ app.post("/orders/", (req, res) => {
 
     if (files.length > 0) {
       files.forEach((file) => {
-        const id = parseInt(file.split("_")[1].split(".")[0]);
+        const id = parseInt(file.split(".")[0]);
         if (id > currentMaxId) {
           currentMaxId = id;
         }
@@ -261,8 +292,8 @@ app.post("/orders/", (req, res) => {
     const hours = String(date.getHours()).padStart(2, "0");
     const minutes = String(date.getMinutes()).padStart(2, "0");
 
-    const formattedDate = `${year}y${month}m${day}d${hours}h${minutes}m`;
-    const fileName = `${formattedDate}_${currentMaxId}.json`;
+    const formattedDate = `${year}${month}${day}${hours}${minutes}`;
+    const fileName = `${currentMaxId}.json`;
     const newFilePath = path.join(__dirname, "data", fileName);
 
     const customerData = {
@@ -284,25 +315,6 @@ app.post("/orders/", (req, res) => {
         return res.send("Saved");
       }
     );
-  });
-});
-
-app.get("/orders/:id", (req, res) => {
-  fs.readdir(ordersFilePath, (err, files) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send("Error retrieving orders");
-    }
-
-    const orders = [];
-    files.forEach((file) => {
-      const filePath = path.join(ordersFilePath, file);
-      const orderData = fs.readFileSync(filePath, "utf8");
-      const order = JSON.parse(orderData);
-      orders.push(order);
-    });
-
-    res.json(orders);
   });
 });
 
